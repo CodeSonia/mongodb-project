@@ -16,11 +16,10 @@ def mongo_connect(url):
     except pymongo.errors.ConnectionFailure as e:
         print("Could not connect to MongoDB: %s") % e      
 
+
 conn = mongo_connect(MONGO_URI)
 
 coll = conn[DATABASE][COLLECTION]
-
-coll.update_many({"nationality": "american"}, {"$set": {"hair_color": "maroon"}})
 
 documents = coll.find({"nationality": "american"})
 
